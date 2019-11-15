@@ -1,43 +1,26 @@
 package com.roomates.book.entity;
 
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Timestamp;
-
-@Table(name = "account", schema = "book")
 @Entity
+@Table(name = "user", schema = "book")
 public class User {
 
     @Id
-    @Column(name = "user_id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Column(name = "username")
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(name = "password")
+    @Column
     private String password;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "status")
-    private String status;
-
-    @Column(name = "created_on")
-    private Timestamp createdOn;
-
-    @Column(name = "last_login")
-    private Timestamp lastLogin;
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,37 +38,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Timestamp getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Timestamp createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Timestamp getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Timestamp lastLogin) {
-        this.lastLogin = lastLogin;
     }
 }
